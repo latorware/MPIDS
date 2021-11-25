@@ -88,8 +88,8 @@ void read_parameters(int argc, char **argv) {
 }
 
 
-bool es_major(set<int> first, set<int> second) {
-    if (first.size() >= second.size()) return true;
+bool ordena_es_major(int f, int g) { //per ordenar veins de major a menor
+    if (neighbors[f].size() >= neighbors[g].size()) return true;
     else return false; 
 }
 
@@ -164,9 +164,15 @@ int main( int argc, char **argv ) {
 
 
     //ORDENAR PER NOMBRE VEINS
-    vector<int> veins = vector<int> (); //veins[i] sera el vertex ordenat per mes a menys arestes
+    vector<int> veins = vector<int> (neighbors.size()); //veins[i] sera el vertex ordenat per mes a menys arestes
 
-    sort (neighbors.begin(), neighbors.end(), es_major()); //ESTA MALAMENT
+    for (int i = 0; i < veins.size(); i++) {
+        veins[i] = i; 
+    }
+
+    sort (veins.begin(), veins.end(), ordena_es_major); 
+
+    //JA TENIM VEINS (veins[i]) ORDENATS DE MAJOR A MENOR PER ARESTES
 
 
     bool dominant = false; //diu si es dominant (nomes dominant, no dominant de influencia positiva)
@@ -174,10 +180,13 @@ int main( int argc, char **argv ) {
 
     for (int i = 0; (i < veins.size() && (!dominant); i++) {
         if (!es_dominant(resultat, neighbors)) {
-            resultat.insert()
+            resultat.insert(veins[i]);
         }
+        else dominant = true; 
 
     }
+
+    //aqui resultat ja te el conjunt dominant notablement minim (nomes dominant, no de influencia positiva)
 
 
 }
