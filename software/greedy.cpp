@@ -164,12 +164,18 @@ int main( int argc, char **argv ) {
 
 
     //ORDENAR PER NOMBRE VEINS
-    sort (neighbors.begin(), neighbors.end(), es_major()); 
+    vector<int> veins = vector<int> (); //veins[i] sera el vertex ordenat per mes a menys arestes
+
+    sort (neighbors.begin(), neighbors.end(), es_major()); //ESTA MALAMENT
 
 
-    bool es_dominant = false; 
+    bool dominant = false; //diu si es dominant (nomes dominant, no dominant de influencia positiva)
 
-    while (!es_dominant) {
+
+    for (int i = 0; (i < veins.size() && (!dominant); i++) {
+        if (!es_dominant(resultat, neighbors)) {
+            resultat.insert()
+        }
 
     }
 
