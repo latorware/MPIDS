@@ -94,6 +94,21 @@ bool es_major(set<int> first, set<int> second) {
 }
 
 
+bool es_dominant(set<int>& c_dominant, vector< set<int> >& neighbors) { //NOMES DOMINANT (no influencia positiva)
+    for (int i = 0; i < neighbors.size(); i++) {
+        if (    !(c_dominant.find(i) != c_dominant.end())     ) {
+            bool trobat_almemys_un = false; 
+            set<int>::iterator it; 
+            for (it = neighbors[i].begin(); (it != neighbors[i].end() && (!trobat_almemys_un)); ++it) {
+                if ( (c_dominant.find(*it) != c_dominant.end())     ) trobat_almemys_un = true; 
+            }
+            if (!trobat_almemys_un) return false; 
+        }
+    }
+    return true; 
+}
+
+
 /************
 Main function
 *************/
@@ -145,12 +160,18 @@ int main( int argc, char **argv ) {
     // cout << "value " << <value of your solution> << "\ttime " << ct << endl;
 
 
-
+    set<int> resultat = set<int> (); //Conjunt dominant dinfluencia positiva
 
 
     //ORDENAR PER NOMBRE VEINS
     sort (neighbors.begin(), neighbors.end(), es_major()); 
 
+
+    bool es_dominant = false; 
+
+    while (!es_dominant) {
+
+    }
 
 
 }
