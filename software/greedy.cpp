@@ -36,6 +36,8 @@
 #include <limits>
 #include <iomanip>
 
+#include <algorithm>
+
 // global variables concerning the random number generator (in case needed)
 time_t t;
 Random* rnd;
@@ -83,6 +85,12 @@ void read_parameters(int argc, char **argv) {
             
         iarg++;
     }
+}
+
+
+bool es_major(set<int> first, set<int> second) {
+    if (first.size() >= second.size()) return true;
+    else return false; 
 }
 
 
@@ -135,6 +143,15 @@ int main( int argc, char **argv ) {
     // time as explained above. Say you store it in variable ct.
     // Then write the following to the screen: 
     // cout << "value " << <value of your solution> << "\ttime " << ct << endl;
+
+
+
+
+
+    //ORDENAR PER NOMBRE VEINS
+    sort (neighbors.begin(), neighbors.end(), es_major()); 
+
+
 
 }
 
