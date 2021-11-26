@@ -115,7 +115,7 @@ bool inf_positiva(set<int>& c_inf_positiva, vector<set<int> >& neighbors) {
         bool almenys_meitat = false; 
         int contador = 0; 
         set<int>::iterator it; 
-        for (it = neighbors[i].begin(); (it != neighbors[i].end) && (!almenys_meitat); it++) {
+        for (it = neighbors[i].begin(); (it != neighbors[i].end()) && (!almenys_meitat); it++) {
             if ( (c_inf_positiva.find(*it) != c_inf_positiva.end())) contador++; 
             if (contador >= meitat) almenys_meitat = true; 
         }
@@ -196,7 +196,7 @@ int main( int argc, char **argv ) {
     int d_a_partir_de = 0; 
 
     //fem fins que el tinguem dominant
-    for (int i = 0; (i < veins.size() && (!dominant); i++) {
+    for (int i = 0; (i < veins.size()) && (!dominant); i++) {
         resultat.insert(veins[i]);
         if (es_dominant(resultat, neighbors)) {
             dominant = true; 
@@ -206,12 +206,12 @@ int main( int argc, char **argv ) {
 
     //aqui resultat ja te el conjunt dominant notablement minim (nomes dominant, no de influencia positiva)
 
-    bool inf_positiva = false; //diu si es conjunt de influencia positiva
+    bool c_positiu = false; //diu si es conjunt de influencia positiva
 
     //fem com abans pero fins que el tinguem dominant influencia positiva, i començant desde on u hem deixat
-    for (int i = (d_a_partir_de+1); (i < veins.size() && (!inf_positiva)); i++) {
+    for (int i = (d_a_partir_de+1); (i < veins.size() && (!c_positiu)); i++) {
         if (inf_positiva(resultat, neighbors)) {
-            inf_positiva = true; 
+            c_positiu = true; 
         }
         else {
             resultat.insert(veins[i]); 
