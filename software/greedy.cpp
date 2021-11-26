@@ -293,7 +293,7 @@ int main( int argc, char **argv ) {
     bool dominant_positiu = false; //diu si es dominant (nomes dominant, no dominant de influencia positiva)
     int d_a_partir_de = 0; 
     //fem fins que el tinguem dominant
-    for (int i = 0; (i < veins.size()) && (!dominant_positiu); i++) {
+    for (int i = 0; (i < veins.size()); i++) {
         int hsi = hs(veins[i], resultat);
         if ( hsi > 0 ) {
             //cout << "ENTRA EN HS > 0 " << veins[i]; 
@@ -332,7 +332,6 @@ int main( int argc, char **argv ) {
             }
             //cout << endl; 
         }
-        if (inf_positiva(resultat, neighbors)) dominant_positiu = true; 
 
         //cout << endl;
     }
