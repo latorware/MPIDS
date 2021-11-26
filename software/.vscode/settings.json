@@ -1,3 +1,16 @@
 {
-    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/mnt/c/Users/lator/Documents/GitHub/MPIDS/software",
+            "binaryPath": "/mnt/c/Users/lator/Documents/GitHub/MPIDS/software/greedy",
+            "binaryArgs": ["-i ./ego-facebook.txt"]
+        }
+    ,         {
+        "cwd": "/mnt/c/Users/lator/Documents/GitHub/MPIDS/software",
+        "binaryPath": "/mnt/c/Users/lator/Documents/GitHub/MPIDS/software/greedy",
+        "binaryArgs": ["-i ./ego-facebook.txt"]
+    }
+]
+    
 }
