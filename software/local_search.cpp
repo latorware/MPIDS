@@ -92,6 +92,64 @@ void read_parameters(int argc, char **argv) {
     }
 }
 
+int heuristic (const set<int>& estat) {
+    return estat.size(); 
+}
+
+bool inf_positiva(const set<int>& c_inf_positiva) {
+    for (int i = 0; i < neighbors.size(); i++) {
+        int meitat = ceil(neighbors[i].size()/2.0); 
+        bool almenys_meitat = false; 
+        int contador = 0; 
+        set<int>::iterator it; 
+        for (it = neighbors[i].begin(); (it != neighbors[i].end()) && (!almenys_meitat); it++) {
+            if ( (c_inf_positiva.find(*it) != c_inf_positiva.end())) contador++; 
+            if (contador >= meitat) almenys_meitat = true; 
+        }
+        if (!almenys_meitat) return false; 
+
+    }
+    return true; 
+}
+
+
+vector<int> eliminar_disponibles (set<int> estat)  {
+    vector<int> retorna; 
+    for (int i : estat) {
+        if (inf_positiva(estat.erase(i))) {
+            retorna.push_back(i); 
+        }
+    }
+}
+
+vector<int> add_disponibles (const set<int>& estat) {
+    vector<int> retorna; 
+    for (int i : neighbors) {
+        if (estat.find(i) == estat.end()) {
+            retorna.push_back(i); 
+        }
+    }
+}
+
+set<int> genera_successor (set<int> estat) {
+    vector<int> elimina = eliminar_disponibles(estat); 
+    vector<int> add = add_disponibles(estat); 
+    int aleatori = rand() % ((elimina.size() + add.size())-1) + 0;
+    if (aleatori < elimina.size()) {
+        estat.erase(elimina[aleatori]); 
+    }
+    else {
+        estat.insert(add[aleatori-elimina.size()]); 
+    }
+    return estat; 
+
+}
+
+double canvi_temperatura (double tempactual, double k, double lambda) {
+    return (k * (pow(exp(), (-lambda)*(tempactual)*1.0))  ); 
+}
+
+
 
 /**********
 Main function
@@ -161,6 +219,57 @@ int main( int argc, char **argv ) {
         // Finally store the needed computation time (that is, the time 
         // measured once the local minimum is reached) in vector times: 
         // times[na] = ct;
+
+
+        set<int> estat; 
+
+        for (int i = 0; i < neighbors.size(); i++) {
+            estat.insert(i); 
+        }
+
+        int iteraciones = 4000;
+        int itpertemp = 50; 
+        double k = 1; 
+        double lambda = 0.0000000001; 
+
+
+        //AQUI TENIM ESTAT INICAL
+        int contcanvitemp = 0; 
+        double temp = neighbors.size();            //temperatura inicial
+        for (int i = 0; i < iteraciones; i++) {
+            if (contcanvitemp == itpertemp) {
+                contcanvitemp = 0; 
+                temp = canvi_temperatura(temp, k, lambda); 
+            }
+
+            set<int> estatseguent = genera_successor(estat); 
+            double diferencia = heuristic(estat) - heuristic(estatseguent); 
+            if (diferencia > 0) {
+                estat = estatseguent; 
+            }
+            else {
+                double probabilidad = pow(exp(), (diferencia) / (temp * 1.0) ); 
+                if ((rand() % 1000) < (int(probabilidad*1000)) ) estat = estatseguent; 
+            }
+
+
+
+
+
+
+
+            contcanvitemp++; 
+        }
+
+
+
+
+
+
+
+
+
+
 
         cout << "end application " << na + 1 << endl;
     }
