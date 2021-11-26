@@ -288,8 +288,6 @@ int main( int argc, char **argv ) {
     //cout << endl; 
     //JA TENIM VEINS (veins[i]) ORDENATS DE MAJOR A MENOR PER ARESTES
 
-    
-
     bool dominant_positiu = false; //diu si es dominant (nomes dominant, no dominant de influencia positiva)
     int d_a_partir_de = 0; 
     //fem fins que el tinguem dominant
