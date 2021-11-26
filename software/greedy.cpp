@@ -109,6 +109,23 @@ bool es_dominant(set<int>& c_dominant, vector< set<int> >& neighbors) { //NOMES 
 }
 
 
+bool inf_positiva(set<int>& c_inf_positiva, vector<set<int> >& neighbors) {
+    for (int i = 0; i < neighbors.size(); i++) {
+        int meitat = ceil(neighbors[i].size()/2.0); 
+        bool almenys_meitat = false; 
+        int contador = 0; 
+        set<int>::iterator it; 
+        for (it = neighbors[i].begin(); (it != neighbors[i].end) && (!almenys_meitat); it++) {
+            if ( (c_inf_positiva.find(*it) != c_inf_positiva.end())) contador++; 
+            if (contador >= meitat) almenys_meitat = true; 
+        }
+        if (!almenys_meitat) return false; 
+
+    }
+    return true; 
+}
+
+
 /************
 Main function
 *************/
@@ -176,17 +193,39 @@ int main( int argc, char **argv ) {
 
 
     bool dominant = false; //diu si es dominant (nomes dominant, no dominant de influencia positiva)
+    int d_a_partir_de = 0; 
 
-
+    //fem fins que el tinguem dominant
     for (int i = 0; (i < veins.size() && (!dominant); i++) {
-        if (!es_dominant(resultat, neighbors)) {
-            resultat.insert(veins[i]);
+        resultat.insert(veins[i]);
+        if (es_dominant(resultat, neighbors)) {
+            dominant = true; 
+            d_a_partir_de = i; 
         }
-        else dominant = true; 
-
     }
 
     //aqui resultat ja te el conjunt dominant notablement minim (nomes dominant, no de influencia positiva)
+
+    bool inf_positiva = false; //diu si es conjunt de influencia positiva
+
+    //fem com abans pero fins que el tinguem dominant influencia positiva, i començant desde on u hem deixat
+    for (int i = (d_a_partir_de+1); (i < veins.size() && (!inf_positiva)); i++) {
+        if (inf_positiva(resultat, neighbors)) {
+            inf_positiva = true; 
+        }
+        else {
+            resultat.insert(veins[i]); 
+        }
+
+    }
+
+    if (inf_positiva) {
+        double ct = timer.elapsed_time(Timer::VIRTUAL);
+        cout << "value " << resultat.size() << "\ttime " << ct << endl;
+    }
+    else {
+        cout << "ERROR. " << endl; 
+    }
 
 
 }
