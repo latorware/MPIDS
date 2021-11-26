@@ -35,6 +35,7 @@
 #include <set>
 #include <limits>
 #include <iomanip>
+#include <math.h>
 
 // global variables concerning the random number generator (in case needed)
 time_t t;
@@ -96,7 +97,7 @@ int heuristic (const set<int>& estat) {
     return estat.size(); 
 }
 
-bool inf_positiva(const set<int>& c_inf_positiva) {
+bool inf_positiva(set<int> c_inf_positiva) {
     for (int i = 0; i < neighbors.size(); i++) {
         int meitat = ceil(neighbors[i].size()/2.0); 
         bool almenys_meitat = false; 
@@ -113,22 +114,26 @@ bool inf_positiva(const set<int>& c_inf_positiva) {
 }
 
 
-vector<int> eliminar_disponibles (set<int> estat)  {
+vector<int> eliminar_disponibles (const set<int>& estat)  {
     vector<int> retorna; 
+    set<int> e = estat;
     for (int i : estat) {
-        if (inf_positiva(estat.erase(i))) {
+        e.erase(i);
+        if (inf_positiva(e)) {
             retorna.push_back(i); 
         }
     }
+    return retorna; 
 }
 
 vector<int> add_disponibles (const set<int>& estat) {
     vector<int> retorna; 
-    for (int i : neighbors) {
+    for (int i = 0; i < neighbors.size(); ++i) {
         if (estat.find(i) == estat.end()) {
             retorna.push_back(i); 
         }
     }
+    return retorna; 
 }
 
 set<int> genera_successor (set<int> estat) {
@@ -146,7 +151,7 @@ set<int> genera_successor (set<int> estat) {
 }
 
 double canvi_temperatura (double tempactual, double k, double lambda) {
-    return (k * (pow(exp(), (-lambda)*(tempactual)*1.0))  ); 
+    return (k * (pow(exp(1.0), (-lambda)*(tempactual)*1.0))  ); 
 }
 
 
@@ -248,28 +253,14 @@ int main( int argc, char **argv ) {
                 estat = estatseguent; 
             }
             else {
-                double probabilidad = pow(exp(), (diferencia) / (temp * 1.0) ); 
+                double probabilidad = pow(exp(1.0), (diferencia) / (temp * 1.0) ); 
                 if ((rand() % 1000) < (int(probabilidad*1000)) ) estat = estatseguent; 
             }
-
-
-
-
-
-
-
             contcanvitemp++; 
         }
-
-
-
-
-
-
-
-
-
-
+        double ct = timer.elapsed_time(Timer::VIRTUAL); 
+        cout << "VALUE: " << estat.size() <<  "\ttime " << ct << endl; 
+        results[na] = estat.size(); 
 
         cout << "end application " << na + 1 << endl;
     }
