@@ -89,6 +89,7 @@ void read_parameters(int argc, char **argv) {
 
 
 bool ordena_es_major(int f, int g) { //per ordenar veins de major a menor
+    //cout << f << ' ' << g << endl; 
     if (neighbors[f].size() >= neighbors[g].size()) return true;
     else return false; 
 }
@@ -123,6 +124,87 @@ bool inf_positiva(set<int>& c_inf_positiva, vector<set<int> >& neighbors) {
 
     }
     return true; 
+}
+/**
+void escribir_grafo( vector<set<int> >& grafo) {
+	for (int i = 0; i < grafo.size(); ++i) {
+	   cout << i << ":";
+       if (grafo[i].empty()) cout << "TRUE" << endl; 
+	   for (int j : grafo[i]) {
+	   		cout << " " << j; 
+		}
+	   cout << endl;
+	}
+}
+*/
+
+void MergeSortedIntervals(vector<int>& v, int s, int m, int e) {
+	
+    // temp is used to temporary store the vector obtained by merging
+    // elements from [s to m] and [m+1 to e] in v
+	vector<int> temp;
+
+	int i, j;
+	i = s;
+	j = m + 1;
+
+	while (i <= m && j <= e) {
+
+		if (ordena_es_major(v[i], v[j])) {
+			temp.push_back(v[i]);
+			++i;
+		}
+		else {
+			temp.push_back(v[j]);
+			++j;
+		}
+
+	}
+
+	while (i <= m) {
+		temp.push_back(v[i]);
+		++i;
+	}
+
+	while (j <= e) {
+		temp.push_back(v[j]);
+		++j;
+	}
+
+	for (int i = s; i <= e; ++i)
+		v[i] = temp[i - s];
+
+}
+
+// the MergeSort function
+// Sorts the array in the range [s to e] in v using
+// merge sort algorithm
+void MergeSort(vector<int>& v, int s, int e) {
+	if (s < e) {
+		int m = (s + e) / 2;
+		MergeSort(v, s, m);
+		MergeSort(v, m + 1, e);
+		MergeSortedIntervals(v, s, m, e);
+	}
+}
+
+
+
+int hs (int a, const set<int>& result) {
+    int meitatdeg = ceil(neighbors[a].size()/2.0); 
+    int veins_dominant = 0; 
+    for (int i : neighbors[a]) {
+        if ((result.find(i) != result.end())) veins_dominant++; 
+    }
+    return (meitatdeg - veins_dominant); 
+}
+
+int coverdegree (int a, const set<int>& result) {
+    int contador = 0; 
+    for (int i : neighbors[a]) {
+        if (hs(i, result) > 0) contador++; 
+    }
+    return contador; 
 }
 
 
@@ -176,52 +258,98 @@ int main( int argc, char **argv ) {
     // Then write the following to the screen: 
     // cout << "value " << <value of your solution> << "\ttime " << ct << endl;
 
-
+    //escribir_grafo(neighbors); 
     set<int> resultat = set<int> (); //Conjunt dominant dinfluencia positiva
+    //set<int> inverseresult = set<int> (); 
 
 
     //ORDENAR PER NOMBRE VEINS
-    vector<int> veins = vector<int> (neighbors.size()); //veins[i] sera el vertex ordenat per mes a menys arestes
+    vector<int> veins = vector<int> (); //veins[i] sera el vertex ordenat per mes a menys arestes
 
-    for (int i = 0; i < veins.size(); i++) {
-        veins[i] = i; 
+    for (int i = 0; i < neighbors.size(); i++) {
+        veins.push_back(i); 
+        //inverseresult.insert(i); 
     }
+    /**
+    cout << "IMPRIMINT RESULTAT: "; 
+    for (int i : resultat) cout << i << ' '; 
+    cout << endl; 
+    cout << "IMPRIMINT INVERSE: "; 
+    for (int i : inverseresult) cout << i << ' '; 
+    cout << endl; 
+    //cout << "VEINS SIZE " << veins.size() << endl; 
+    //sort (veins.begin(), veins.end(), ordena_es_major); 
+    */
 
-    sort (veins.begin(), veins.end(), ordena_es_major); 
+    MergeSort(veins, 0, veins.size()-1); 
 
+    cout << "time after merge sort " << timer.elapsed_time(Timer::VIRTUAL) << endl; 
+    //for (int i : veins) cout << i << ' '; 
+    //cout << endl; 
     //JA TENIM VEINS (veins[i]) ORDENATS DE MAJOR A MENOR PER ARESTES
 
+    
 
-    bool dominant = false; //diu si es dominant (nomes dominant, no dominant de influencia positiva)
+    bool dominant_positiu = false; //diu si es dominant (nomes dominant, no dominant de influencia positiva)
     int d_a_partir_de = 0; 
-
     //fem fins que el tinguem dominant
-    for (int i = 0; (i < veins.size()) && (!dominant); i++) {
-        resultat.insert(veins[i]);
-        if (es_dominant(resultat, neighbors)) {
-            dominant = true; 
-            d_a_partir_de = i; 
+    for (int i = 0; (i < veins.size()) && (!dominant_positiu); i++) {
+        int hsi = hs(veins[i], resultat);
+        if ( hsi > 0 ) {
+            //cout << "ENTRA EN HS > 0 " << veins[i]; 
+            //cout << "ENTRANDO EN HSI > 0     " << veins[i] << endl; 
+            for (int j = 0; j < hsi; j++) {
+                //cout << "ENTRANDO EN BUCLE 0 HSI     "<< j << endl; 
+                bool es_primer = true; 
+                bool almenys_un = false; 
+                pair <int, int> maximo; //first = vetrtice_maximo   second = cover degree
+                for (int k : neighbors[veins[i]]) {
+                    //cout << "ENTRANDO EN BUCLE k NEIGHOURS     "<< k <<endl; 
+                    //cout << k << ' '; 
+                    if (resultat.find(k) == resultat.end()) {
+                        if (!almenys_un) almenys_un = true; 
+                        if (es_primer) {
+                            maximo.first = k; 
+                            maximo.second = coverdegree(k, resultat); 
+                            es_primer = false; 
+                        }
+                        else {
+                            int actual = coverdegree(k, resultat); 
+                            if (actual >= maximo.second) {
+                                maximo.first = k; 
+                                maximo.second = actual; 
+                            }
+
+                        }
+                    }
+                }
+                //cout << endl; 
+                //cout << endl; 
+                if (almenys_un) {
+                    resultat.insert(maximo.first); 
+                }
+
+            }
+            //cout << endl; 
         }
+        if (inf_positiva(resultat, neighbors)) dominant_positiu = true; 
+
+        //cout << endl;
     }
 
-    //aqui resultat ja te el conjunt dominant notablement minim (nomes dominant, no de influencia positiva)
+    /**
+    cout << "IMPRIMINT RESULTAT: "; 
+    for (int i : resultat) cout << i << ' '; 
+    cout << endl; 
+    cout << "IMPRIMINT INVERSE: "; 
+    for (int i : inverseresult) cout << i << ' '; 
+    cout << endl; 
+    */
 
-    bool c_positiu = false; //diu si es conjunt de influencia positiva
-
-    //fem com abans pero fins que el tinguem dominant influencia positiva, i començant desde on u hem deixat
-    for (int i = (d_a_partir_de+1); (i < veins.size() && (!c_positiu)); i++) {
-        if (inf_positiva(resultat, neighbors)) {
-            c_positiu = true; 
-        }
-        else {
-            resultat.insert(veins[i]); 
-        }
-
-    }
-
-    if (inf_positiva) {
+    if (true) {
         double ct = timer.elapsed_time(Timer::VIRTUAL);
         cout << "value " << resultat.size() << "\ttime " << ct << endl;
+        //for(int i : resultat) cout<< i << endl;
     }
     else {
         cout << "ERROR. " << endl; 
