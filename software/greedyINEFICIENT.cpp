@@ -343,7 +343,7 @@ int main( int argc, char **argv ) {
     cout << endl; 
     */
 
-    if (true) {
+    if (inf_positiva(resultat, neighbors )) {
         double ct = timer.elapsed_time(Timer::VIRTUAL);
         cout << "value " << resultat.size() << "\ttime " << ct << endl;
         //for(int i : resultat) cout<< i << endl;
