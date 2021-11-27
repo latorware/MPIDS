@@ -229,6 +229,9 @@ int main( int argc, char **argv ) {
     for (int na = 0; na < n_apps; ++na) {
 
         // the computation time starts now
+        veins_dominants.clear(); 
+
+        
         Timer timer;
 
         // Example for requesting the elapsed computation time at any moment: 
@@ -266,8 +269,8 @@ int main( int argc, char **argv ) {
         }
         //cout << "DESPRES DE CREAR ESTAT INICIAL" << endl; 
 
-        int iteraciones = 50000;
-        int itpertemp = 50; 
+        int iteraciones = 5000;
+        int itpertemp = 1; 
         double k = 1; 
         double lambda = 0.0000000001; 
 
