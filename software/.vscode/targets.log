@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Fri Nov 26 11:41:09 2021
+# Make data base, printed on Sat Nov 27 12:03:26 2021
 
 # Variables
 
@@ -15,7 +16,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 ?F = $(notdir $?)
 # environment
-WSLENV = ELECTRON_RUN_AS_NODE/w:
+WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # default
 .SHELLFLAGS := -c
 # environment
@@ -39,7 +40,7 @@ SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
-_ = /mnt/c/Users/lator/AppData/Local/Programs/Microsoft VS Code/bin/code
+_ = /home/latorware/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node
 # makefile (from 'Makefile', line 9)
 CCC = g++
 # makefile (from 'Makefile', line 1)
@@ -71,9 +72,8 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-d7caf187-cdc0-407e-8f11-d95bc814667f.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-32c2282f-ae65-4c19-9c25-fffc9e7ac84f.sock
 # default
- 
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
 LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
@@ -88,7 +88,7 @@ PWD = /mnt/c/Users/lator/Documents/GitHub/MPIDS/software
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/221_interop
+WSL_INTEROP = /run/WSL/11_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
@@ -112,7 +112,7 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 1
+SHLVL = 0
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -122,7 +122,7 @@ USER = latorware
 # makefile (from 'Makefile', line 12)
 CCFLAGS = $(CCOPT) -I$(CPLEXINCDIR) -I$(CONCERTINCDIR)
 # environment
-NAME = Code
+NAME = DESKTOP-O9K8TPQ
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -175,8 +175,10 @@ TERM = xterm-256color
 VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu
+# environment
+MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=82/1024=8%, Rehash=0, Collisions=7/110=6%
+# Load=83/1024=8%, Rehash=0, Collisions=7/116=6%
 
 # Pattern-specific Variable Values
 
@@ -184,7 +186,7 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 65, inode 3096224744650125): 25 files, no impossibilities.
+# . (device 66, inode 3096224744650125): 25 files, no impossibilities.
 
 # 25 files, no impossibilities in 1 directories.
 
@@ -199,7 +201,15 @@ all: greedy local_search
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 Makefile:
@@ -210,15 +220,14 @@ Makefile:
 
 # Not a target:
 local_search.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2021-10-20 13:09:06
-#  File has been updated.
-#  Successfully updated.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 greedy.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-26 10:22:13.5104345
+#  Last modified 2021-11-26 18:17:57.7481675
 #  File has been updated.
 #  Successfully updated.
 
@@ -237,48 +246,67 @@ clean:
 
 local_search: local_search.cpp Random.o Timer.o
 #  Implicit rule search has not been done.
-#  Last modified 2021-11-26 11:35:38.2441598
-#  File has been updated.
-#  Successfully updated.
+#  Modification time never checked.
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 20):
 	${CCC} ${CXXFLAGS} -o $@ $^
 
 greedy: greedy.cpp Random.o Timer.o
 #  Implicit rule search has not been done.
-#  Last modified 2021-11-26 11:35:37.2611807
+#  Implicit/static pattern stem: ''
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := greedy
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := greedy.cpp Random.o Timer.o
+# automatic
+# | := 
+# automatic
+# < := greedy.cpp
+# automatic
+# ^ := greedy.cpp Random.o Timer.o
+# automatic
+# ? := greedy.cpp Random.o Timer.o
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
 #  recipe to execute (from 'Makefile', line 17):
 	${CCC} ${CXXFLAGS} -o $@ $^
 
 # Not a target:
 Timer.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-26 11:35:36.3511266
+#  Last modified 2021-11-27 12:03:10.0974081
 #  File has been updated.
+ 
 #  Successfully updated.
 
 # Not a target:
 Random.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-26 11:35:36.3013295
+#  Last modified 2021-11-27 12:03:10.0565745
 #  File has been updated.
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/32=0%
+# Load=11/1024=1%, Rehash=0, Collisions=0/33=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 31 / storage = 378 B / avg = 12 B
-# current buf: size = 8162 B / used = 378 B / count = 31 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 32 / storage = 388 B / avg = 12 B
+# current buf: size = 8162 B / used = 388 B / count = 32 / avg = 12 B
 
-# strcache performance: lookups = 50 / hit rate = 38%
+# strcache performance: lookups = 51 / hit rate = 37%
 # hash-table stats:
-# Load=31/8192=0%, Rehash=0, Collisions=1/50=2%
-# Finished Make data base on Fri Nov 26 11:41:09 2021
+# Load=32/8192=0%, Rehash=0, Collisions=1/51=2%
+# Finished Make data base on Sat Nov 27 12:03:26 2021
 
  

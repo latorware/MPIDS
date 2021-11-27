@@ -35,8 +35,7 @@
 #include <set>
 #include <limits>
 #include <iomanip>
-#include <utility>
-#include <unordered_set>
+
 #include <algorithm>
 
 // global variables concerning the random number generator (in case needed)
@@ -111,7 +110,7 @@ bool es_dominant(set<int>& c_dominant, vector< set<int> >& neighbors) { //NOMES 
 }
 
 
-bool inf_positiva(const unordered_set<int>& c_inf_positiva, vector<set<int> >& neighbors) {
+bool inf_positiva(set<int>& c_inf_positiva, vector<set<int> >& neighbors) {
     for (int i = 0; i < neighbors.size(); i++) {
         int meitat = ceil(neighbors[i].size()/2.0); 
         bool almenys_meitat = false; 
@@ -191,7 +190,7 @@ void MergeSort(vector<int>& v, int s, int e) {
 
 
 
-int hs (int a, const unordered_set<int>& result) {
+int hs (int a, const set<int>& result) {
     int meitatdeg = ceil(neighbors[a].size()/2.0); 
     int veins_dominant = 0; 
     for (int i : neighbors[a]) {
@@ -200,7 +199,7 @@ int hs (int a, const unordered_set<int>& result) {
     return (meitatdeg - veins_dominant); 
 }
 
-int coverdegree (int a, const unordered_set<int>& result) {
+int coverdegree (int a, const set<int>& result) {
     int contador = 0; 
     for (int i : neighbors[a]) {
         if (hs(i, result) > 0) contador++; 
@@ -260,7 +259,7 @@ int main( int argc, char **argv ) {
     // cout << "value " << <value of your solution> << "\ttime " << ct << endl;
 
     //escribir_grafo(neighbors); 
-    unordered_set<int> resultat; //Conjunt dominant dinfluencia positiva
+    set<int> resultat = set<int> (); //Conjunt dominant dinfluencia positiva
     //set<int> inverseresult = set<int> (); 
 
 
@@ -292,52 +291,48 @@ int main( int argc, char **argv ) {
     bool dominant_positiu = false; //diu si es dominant (nomes dominant, no dominant de influencia positiva)
     int d_a_partir_de = 0; 
     //fem fins que el tinguem dominant
-    for (int i : veins) {
-        int hsi = hs(i, resultat);
+    for (int i = 0; (i < veins.size()); i++) {
+        int hsi = hs(veins[i], resultat);
         if ( hsi > 0 ) {
             //cout << "ENTRA EN HS > 0 " << veins[i]; 
             //cout << "ENTRANDO EN HSI > 0     " << veins[i] << endl; 
-            
+            for (int j = 0; j < hsi; j++) {
                 //cout << "ENTRANDO EN BUCLE 0 HSI     "<< j << endl; 
-                set<pair<int, int>, std::greater<pair<int,int>>> h;
-                for (int k : neighbors[i]) {
-                    //cout << "ENTRANDO EN BUCLE k NEIGHBOURS     "<< k <<endl; 
+                bool es_primer = true; 
+                bool almenys_un = false; 
+                pair <int, int> maximo; //first = vetrtice_maximo   second = cover degree
+                for (int k : neighbors[veins[i]]) {
+                    //cout << "ENTRANDO EN BUCLE k NEIGHOURS     "<< k <<endl; 
                     //cout << k << ' '; 
-					
                     if (resultat.find(k) == resultat.end()) {
-					  
-					  int actual = coverdegree(k, resultat); 
-					  pair<int,int> v; 
-					  v.first = actual; 
-					  v.second = k;
-					  h.insert(v);
-					  
-					  
-                    }
-                    
-                }
-                //for (pair<int,int> i : h) cout << " Cover "<< i.first << " " << " Vertex " << i.second;
-				//cout << endl;
-				
-				//cout << i << " Soy el hsi: " << hsi;
-				
-                //cout << endl; 
-                //cout << endl; 
-                for (pair<int,int> i : h) if (hsi > 0) {
-					resultat.insert(i.second);
-					--hsi;
-				}
-                
+                        if (!almenys_un) almenys_un = true; 
+                        if (es_primer) {
+                            maximo.first = k; 
+                            maximo.second = coverdegree(k, resultat); 
+                            es_primer = false; 
+                        }
+                        else {
+                            int actual = coverdegree(k, resultat); 
+                            if (actual >= maximo.second) {
+                                maximo.first = k; 
+                                maximo.second = actual; 
+                            }
 
-            
+                        }
+                    }
+                }
+                //cout << endl; 
+                //cout << endl; 
+                if (almenys_un) {
+                    resultat.insert(maximo.first); 
+                }
+
+            }
             //cout << endl; 
         }
 
         //cout << endl;
     }
-    
-//     for (int i : resultat) cout << i << " "; 
-// 	cout << endl;
 
     /**
     cout << "IMPRIMINT RESULTAT: "; 
@@ -348,7 +343,7 @@ int main( int argc, char **argv ) {
     cout << endl; 
     */
 
-    if (inf_positiva(resultat, neighbors)) {
+    if (true) {
         double ct = timer.elapsed_time(Timer::VIRTUAL);
         cout << "value " << resultat.size() << "\ttime " << ct << endl;
         //for(int i : resultat) cout<< i << endl;

@@ -4,13 +4,22 @@
         {
             "cwd": "/mnt/c/Users/lator/Documents/GitHub/MPIDS/software",
             "binaryPath": "/mnt/c/Users/lator/Documents/GitHub/MPIDS/software/greedy",
+            "binaryArgs": [
+                "-i ./ego-facebook.txt"
+            ]
+        },
+        {
+            "cwd": "/mnt/c/Users/lator/Documents/GitHub/MPIDS/software",
+            "binaryPath": "/mnt/c/Users/lator/Documents/GitHub/MPIDS/software/greedy",
+            "binaryArgs": [
+                "-i ./ego-facebook.txt"
+            ]
+        },
+        {
+            "cwd": "/mnt/c/Users/lator/Documents/GitHub/MPIDS/software",
+            "binaryPath": "/mnt/c/Users/lator/Documents/GitHub/MPIDS/software/local_search",
             "binaryArgs": ["-i ./ego-facebook.txt"]
         }
-    ,         {
-        "cwd": "/mnt/c/Users/lator/Documents/GitHub/MPIDS/software",
-        "binaryPath": "/mnt/c/Users/lator/Documents/GitHub/MPIDS/software/greedy",
-        "binaryArgs": ["-i ./ego-facebook.txt"]
-    }
-]
+    ]
     
 }
