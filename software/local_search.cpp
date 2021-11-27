@@ -113,6 +113,31 @@ bool inf_positiva(const set<int>& c_inf_positiva) {
     return true; 
 }
 
+bool is_dominant(const set<int>& set) {
+	bool is = true;
+	for (int i = 0; i < neighbors.size() && is; ++i) {
+	   int size = neighbors[i].size();
+	   size = ceil((size/2.0));
+	   
+	   for (int j : neighbors[i]) {
+		  bool found = false;
+		  for (int k : set) if(!found){
+			 if (j == k) {
+			   --size;
+			   found = true;
+				 
+			 }
+		  }
+		   
+	   }
+	   if (size > 0) {
+		   is = false;  
+	   
+	   }
+	}
+	return is;
+}
+
 
 vector<int> eliminar_disponibles (const set<int>& estat)  {
     vector<int> retorna; 

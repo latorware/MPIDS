@@ -95,36 +95,29 @@ bool ordena_es_major(int f, int g) { //per ordenar veins de major a menor
 }
 
 
-bool es_dominant(set<int>& c_dominant, vector< set<int> >& neighbors) { //NOMES DOMINANT (no influencia positiva)
-    for (int i = 0; i < neighbors.size(); i++) {
-        if (    !(c_dominant.find(i) != c_dominant.end())     ) {
-            bool trobat_almemys_un = false; 
-            set<int>::iterator it; 
-            for (it = neighbors[i].begin(); (it != neighbors[i].end() && (!trobat_almemys_un)); ++it) {
-                if ( (c_dominant.find(*it) != c_dominant.end())     ) trobat_almemys_un = true; 
-            }
-            if (!trobat_almemys_un) return false; 
-        }
-    }
-    return true; 
+
+
+bool is_dominant(const set<int>& set) {
+	for (int i = 0; i < neighbors.size(); ++i) {
+	   int size = neighbors[i].size();
+	   size = ceil((size/2.0));
+	   
+	   for (int j : neighbors[i]) {
+		  if (set.find(j) != set.end()) {
+			--size;
+			   
+				 
+		  }
+		   
+	   }
+	   if (size > 0) {
+		   return false; 
+	   
+	   }
+	}
+	return true;
 }
 
-
-bool inf_positiva(set<int>& c_inf_positiva, vector<set<int> >& neighbors) {
-    for (int i = 0; i < neighbors.size(); i++) {
-        int meitat = ceil(neighbors[i].size()/2.0); 
-        bool almenys_meitat = false; 
-        int contador = 0; 
-        set<int>::iterator it; 
-        for (it = neighbors[i].begin(); (it != neighbors[i].end()) && (!almenys_meitat); it++) {
-            if ( (c_inf_positiva.find(*it) != c_inf_positiva.end())) contador++; 
-            if (contador >= meitat) almenys_meitat = true; 
-        }
-        if (!almenys_meitat) return false; 
-
-    }
-    return true; 
-}
 /**
 void escribir_grafo( vector<set<int> >& grafo) {
 	for (int i = 0; i < grafo.size(); ++i) {
