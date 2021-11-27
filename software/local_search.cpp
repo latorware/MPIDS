@@ -156,6 +156,7 @@ set<int> genera_successor (const set<int>& estat, bool& es_eliminar, int& elimin
     else {
         estat_seguent.insert(add[aleatori-elimina.size()]); 
         es_eliminar = false; 
+        eliminat = add[aleatori-elimina.size()]; 
     }
     cout << "ACABAT GENERA SUCCESSOR    "; 
     return estat_seguent; 
