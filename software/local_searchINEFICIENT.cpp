@@ -45,7 +45,6 @@ Random* rnd;
 int n_of_nodes;
 int n_of_arcs;
 vector< set<int> > neighbors;
-vector<int> veins_dominants; 
 
 // string for keeping the name of the input file
 string inputFile;
@@ -98,91 +97,74 @@ int heuristic (const set<int>& estat) {
     return estat.size(); 
 }
 
-
-bool segueix_dominant(const set<int>& set, int eliminat) {  //comprovar si graf segueix sent dominant despres deliminar un
-    for (int i : neighbors[eliminat]) { 
-
-
-        if (((veins_dominants[i]-1)*1.0) < ceil((neighbors[i].size())/2.0) ) {
-            return false; 
-        }
-
-    }
-
-    return true; 
-
-
+bool is_dominant(const set<int>& set) {
+	for (int i = 0; i < neighbors.size(); ++i) {
+	   int size = neighbors[i].size();
+	   size = ceil((size/2.0));
+	   
+	   for (int j : neighbors[i]) {
+		  if (set.find(j) != set.end()) {
+			--size;
+			   
+				 
+		  }
+		   
+	   }
+	   if (size > 0) {
+		   return false; 
+	   
+	   }
+	}
+	return true;
 }
 
 
 vector<int> eliminar_disponibles (const set<int>& estat)  {
-    //cout << "ENTRANT ELIMINA DISPONIBLES   "; 
+    cout << "ENTRANT ELIMINA DISPONIBLES   "; 
     vector<int> retorna; 
     set<int> e = estat;
     for (int i : estat) {
         e.erase(i);
-        if (segueix_dominant(e, i)) {
+        if (is_dominant(e)) {
             retorna.push_back(i); 
         }
         e.insert(i); 
     }
-    //cout << "ACABAT ELIMINA DISPONIBLES   "; 
+    cout << "ACABAT ELIMINA DISPONIBLES   "; 
     return retorna; 
 }
 
-vector<int> add_disponibles (const set<int>& estat, const set<int>& inverseEstat) {
-    //cout << "ENTRANT ADD DISPONIBLES   "; 
+vector<int> add_disponibles (const set<int>& estat) {
+    cout << "ENTRANT ADD DISPONIBLES   "; 
     vector<int> retorna; 
-    for (int i : inverseEstat) {
-        retorna.push_back(i); 
-    }
-    /*
     for (int i = 0; i < neighbors.size(); ++i) {
         if (estat.find(i) == estat.end()) {
             retorna.push_back(i); 
         }
     }
-    */
-    //cout << "ACABANT ADD DISPONIBLES   "; 
+    cout << "ACABANT ADD DISPONIBLES   "; 
     return retorna; 
 }
 
-set<int> genera_successor (const set<int>& estat, const set<int>& inverseEstat, bool& es_eliminar, int& eliminat) {
-    //cout << "ENTRANT GENERA SUCCESSOR   "; 
+set<int> genera_successor (const set<int>& estat) {
+    cout << "ENTRANT GENERA SUCCESSOR   "; 
     set<int> estat_seguent = estat; 
     vector<int> elimina = eliminar_disponibles(estat); 
-    vector<int> add = add_disponibles(estat, inverseEstat); 
+    vector<int> add = add_disponibles(estat); 
     int aleatori = rand() % ((elimina.size() + add.size())-1) + 0;
     if (aleatori < elimina.size()) {
         estat_seguent.erase(elimina[aleatori]); 
-        es_eliminar = true; 
-        eliminat = elimina[aleatori]; 
     }
     else {
         estat_seguent.insert(add[aleatori-elimina.size()]); 
-        es_eliminar = false; 
-        eliminat = add[aleatori-elimina.size()]; 
     }
-    //cout << "ACABAT GENERA SUCCESSOR    "; 
+    cout << "ACABAT GENERA SUCCESSOR    "; 
     return estat_seguent; 
 
 }
 
 double canvi_temperatura (double tempactual, double k, double lambda) {
     return (k * (pow(exp(1.0), (-lambda)*(tempactual)*1.0))  ); 
-}
-
-
-void decrementa_veins_dominants (int eliminat) {
-    for (int i : neighbors[eliminat]) {
-        veins_dominants[i]--; 
-    }
-}
-
-void incrementa_veins_dominants (int afegit) {
-    for (int i : neighbors[afegit]) {
-        veins_dominants[i]++; 
-    }
 }
 
 
@@ -258,13 +240,11 @@ int main( int argc, char **argv ) {
 
 
         set<int> estat; 
-        set<int> inverseEstat; 
-        //cout << "ABANS DE CREAR ESTAT INICIAL" << endl ; 
+        cout << "ABANS DE CREAR ESTAT INICIAL" << endl ; 
         for (int i = 0; i < neighbors.size(); i++) {
             estat.insert(i); //creacio estat inicial
-            veins_dominants.push_back(neighbors[i].size()); //al principi tot els veins dominants
         }
-        //cout << "DESPRES DE CREAR ESTAT INICIAL" << endl; 
+        cout << "DESPRES DE CREAR ESTAT INICIAL" << endl; 
 
         int iteraciones = 4000;
         int itpertemp = 50; 
@@ -276,50 +256,23 @@ int main( int argc, char **argv ) {
         int contcanvitemp = 0; 
         double temp = neighbors.size();            //temperatura inicial
         for (int i = 0; i < iteraciones; i++) {
-            //cout << "INICI ITERACIO " << i << "     "; 
+            cout << "INICI ITERACIO " << i << "     "; 
             if (contcanvitemp == itpertemp) {
                 contcanvitemp = 0; 
                 temp = canvi_temperatura(temp, k, lambda); 
             }
-    
-            bool es_eliminar = false; 
-            int eliminat_afegit = 0; 
-            set<int> estatseguent = genera_successor(estat, inverseEstat, es_eliminar, eliminat_afegit); 
+
+            set<int> estatseguent = genera_successor(estat); 
             double diferencia = heuristic(estat) - heuristic(estatseguent); 
-
-
             if (diferencia > 0) {
-                //estat = estatseguent; 
-                if (es_eliminar) {
-                    estat.erase(eliminat_afegit); 
-                    inverseEstat.insert(eliminat_afegit); 
-                    decrementa_veins_dominants(eliminat_afegit); 
-
-                }
-                else {
-                    estat.insert(eliminat_afegit); 
-                    inverseEstat.erase(eliminat_afegit); 
-                    incrementa_veins_dominants(eliminat_afegit); 
-                }
+                estat = estatseguent; 
             }
             else {
                 double probabilidad = pow(exp(1.0), (diferencia) / (temp * 1.0) ); 
-                if ((rand() % 1000) < (int(probabilidad*1000)) ) {
-                    //estat = estatseguent; 
-                    if (es_eliminar) {
-                        estat.erase(eliminat_afegit);
-                        inverseEstat.insert(eliminat_afegit); 
-                        decrementa_veins_dominants(eliminat_afegit); 
-                    }
-                    else {
-                        estat.insert(eliminat_afegit); 
-                        inverseEstat.erase(eliminat_afegit); 
-                        incrementa_veins_dominants(eliminat_afegit); 
-                    }
-                }
+                if ((rand() % 1000) < (int(probabilidad*1000)) ) estat = estatseguent; 
             }
             contcanvitemp++; 
-            //cout << "FINAL ITERACIO " << i << endl; 
+            cout << "FINAL ITERACIO " << i << endl; 
         }
         double ct = timer.elapsed_time(Timer::VIRTUAL); 
         cout << "VALUE: " << estat.size() <<  "\ttime " << ct << endl; 

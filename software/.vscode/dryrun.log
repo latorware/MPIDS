@@ -1,0 +1,5 @@
+make local_search --dry-run --keep-going --print-directory
+make: Entering directory '/mnt/c/Users/lator/Documents/GitHub/MPIDS/software'
+make: 'local_search' is up to date.
+make: Leaving directory '/mnt/c/Users/lator/Documents/GitHub/MPIDS/software'
+ 

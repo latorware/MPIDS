@@ -1,5 +1,6 @@
 TARGET = greedy local_search 
 CXXFLAGS = -ansi -O3 -fpermissive -std=c++17 
+#CXXFLAGS2 = -ansi -fpermissive -std=c++17 
 OBJS = Random.o Timer.o
 CPLOBJS = Random.o Timer.o
 
