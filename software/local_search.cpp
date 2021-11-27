@@ -147,7 +147,7 @@ vector<int> add_disponibles (const set<int>& estat) {
 
 set<int> genera_successor (const set<int>& estat) {
     cout << "ENTRANT GENERA SUCCESSOR   "; 
-    set<int> estat_seguent = estat; 
+    set<int>* estat_seguent = estat; 
     vector<int> elimina = eliminar_disponibles(estat); 
     vector<int> add = add_disponibles(estat); 
     int aleatori = rand() % ((elimina.size() + add.size())-1) + 0;
@@ -239,10 +239,11 @@ int main( int argc, char **argv ) {
 
 
         set<int> estat; 
-
+        cout << "ABANS DE CREAR ESTAT INICIAL" << endl ; 
         for (int i = 0; i < neighbors.size(); i++) {
-            estat.insert(i); 
+            estat.insert(i); //creacio estat inicial
         }
+        cout << "DESPRES DE CREAR ESTAT INICIAL" << endl; 
 
         int iteraciones = 4000;
         int itpertemp = 50; 
