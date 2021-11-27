@@ -120,6 +120,7 @@ bool is_dominant(const set<int>& set) {
 
 
 vector<int> eliminar_disponibles (const set<int>& estat)  {
+    cout << "ENTRANT ELIMINA DISPONIBLES   "; 
     vector<int> retorna; 
     set<int> e = estat;
     for (int i : estat) {
@@ -128,30 +129,36 @@ vector<int> eliminar_disponibles (const set<int>& estat)  {
             retorna.push_back(i); 
         }
     }
+    cout << "ACABAT ELIMINA DISPONIBLES   "; 
     return retorna; 
 }
 
 vector<int> add_disponibles (const set<int>& estat) {
+    cout << "ENTRANT ADD DISPONIBLES   "; 
     vector<int> retorna; 
     for (int i = 0; i < neighbors.size(); ++i) {
         if (estat.find(i) == estat.end()) {
             retorna.push_back(i); 
         }
     }
+    cout << "ACABANT ADD DISPONIBLES   "; 
     return retorna; 
 }
 
-set<int> genera_successor (set<int> estat) {
+set<int> genera_successor (const set<int>& estat) {
+    cout << "ENTRANT GENERA SUCCESSOR   "; 
+    set<int> estat_seguent = estat; 
     vector<int> elimina = eliminar_disponibles(estat); 
     vector<int> add = add_disponibles(estat); 
     int aleatori = rand() % ((elimina.size() + add.size())-1) + 0;
     if (aleatori < elimina.size()) {
-        estat.erase(elimina[aleatori]); 
+        estat_seguent.erase(elimina[aleatori]); 
     }
     else {
-        estat.insert(add[aleatori-elimina.size()]); 
+        estat_seguent.insert(add[aleatori-elimina.size()]); 
     }
-    return estat; 
+    cout << "ACABAT GENERA SUCCESSOR    "; 
+    return estat_seguent; 
 
 }
 
@@ -247,6 +254,7 @@ int main( int argc, char **argv ) {
         int contcanvitemp = 0; 
         double temp = neighbors.size();            //temperatura inicial
         for (int i = 0; i < iteraciones; i++) {
+            cout << "INICI ITERACIO " << i << "     "; 
             if (contcanvitemp == itpertemp) {
                 contcanvitemp = 0; 
                 temp = canvi_temperatura(temp, k, lambda); 
@@ -262,11 +270,12 @@ int main( int argc, char **argv ) {
                 if ((rand() % 1000) < (int(probabilidad*1000)) ) estat = estatseguent; 
             }
             contcanvitemp++; 
+            cout << "FINAL ITERACIO " << i << endl; 
         }
         double ct = timer.elapsed_time(Timer::VIRTUAL); 
         cout << "VALUE: " << estat.size() <<  "\ttime " << ct << endl; 
         results[na] = estat.size(); 
-
+        cout << endl; 
         cout << "end application " << na + 1 << endl;
     }
 

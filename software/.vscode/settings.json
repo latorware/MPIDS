@@ -20,6 +20,9 @@
             "binaryPath": "/mnt/c/Users/lator/Documents/GitHub/MPIDS/software/local_search",
             "binaryArgs": ["-i ./ego-facebook.txt"]
         }
-    ]
+    ],
+    "files.associations": {
+        "iostream": "cpp"
+    }
     
 }

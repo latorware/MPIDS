@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Sat Nov 27 12:03:26 2021
+# Make data base, printed on Sat Nov 27 14:31:35 2021
 
 # Variables
 
@@ -178,7 +178,7 @@ WSL_DISTRO_NAME = Ubuntu
 # environment
 MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=83/1024=8%, Rehash=0, Collisions=7/116=6%
+# Load=83/1024=8%, Rehash=0, Collisions=7/111=6%
 
 # Pattern-specific Variable Values
 
@@ -186,9 +186,9 @@ MOTD_SHOWN = update-motd
 
 # Directories
 
-# . (device 66, inode 3096224744650125): 25 files, no impossibilities.
+# . (device 66, inode 3096224744650125): 28 files, no impossibilities.
 
-# 25 files, no impossibilities in 1 directories.
+# 28 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -201,33 +201,26 @@ all: greedy local_search
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
-
-# Not a target:
-.SUFFIXES:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Successfully updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-10-20 13:13:00
+#  Last modified 2021-11-27 14:31:34.5494712
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 local_search.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2021-11-27 14:11:12.0900992
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 greedy.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-26 18:17:57.7481675
+#  Last modified 2021-11-27 14:08:05.8130954
 #  File has been updated.
 #  Successfully updated.
 
@@ -246,67 +239,48 @@ clean:
 
 local_search: local_search.cpp Random.o Timer.o
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2021-11-27 14:30:44.5304414
+#  File has been updated.
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 20):
 	${CCC} ${CXXFLAGS} -o $@ $^
 
 greedy: greedy.cpp Random.o Timer.o
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  File does not exist.
+#  Last modified 2021-11-27 14:30:43.6741783
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := greedy
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := greedy.cpp Random.o Timer.o
-# automatic
-# | := 
-# automatic
-# < := greedy.cpp
-# automatic
-# ^ := greedy.cpp Random.o Timer.o
-# automatic
-# ? := greedy.cpp Random.o Timer.o
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
 	${CCC} ${CXXFLAGS} -o $@ $^
 
 # Not a target:
 Timer.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-27 12:03:10.0974081
+#  Last modified 2021-11-27 14:30:42.6710882
 #  File has been updated.
- 
 #  Successfully updated.
 
 # Not a target:
 Random.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-27 12:03:10.0565745
+#  Last modified 2021-11-27 14:30:42.6312018
 #  File has been updated.
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/33=0%
+# Load=11/1024=1%, Rehash=0, Collisions=0/32=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 32 / storage = 388 B / avg = 12 B
-# current buf: size = 8162 B / used = 388 B / count = 32 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 34 / storage = 414 B / avg = 12 B
+# current buf: size = 8162 B / used = 414 B / count = 34 / avg = 12 B
 
-# strcache performance: lookups = 51 / hit rate = 37%
+# strcache performance: lookups = 53 / hit rate = 35%
 # hash-table stats:
-# Load=32/8192=0%, Rehash=0, Collisions=1/51=2%
-# Finished Make data base on Sat Nov 27 12:03:26 2021
+# Load=34/8192=0%, Rehash=0, Collisions=1/53=2%
+# Finished Make data base on Sat Nov 27 14:31:35 2021
 
  
