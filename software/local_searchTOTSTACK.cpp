@@ -119,13 +119,12 @@ bool is_dominant(const set<int>& set) {
 }
 
 
-vector<int> eliminar_disponibles (set<int>* estat)  {
+vector<int> eliminar_disponibles (const set<int>& estat)  {
     cout << "ENTRANT ELIMINA DISPONIBLES   "; 
     vector<int> retorna; 
-    set<int>* e = new set<int> (); 
-    *e = *estat;
-    for (int i : (*estat)) {
-        (*e).erase(i);
+    set<int> e = estat;
+    for (int i : estat) {
+        e.erase(i);
         if (is_dominant(e)) {
             retorna.push_back(i); 
         }
@@ -135,7 +134,7 @@ vector<int> eliminar_disponibles (set<int>* estat)  {
     return retorna; 
 }
 
-vector<int> add_disponibles (set<int>* estat) {
+vector<int> add_disponibles (const set<int>& estat) {
     cout << "ENTRANT ADD DISPONIBLES   "; 
     vector<int> retorna; 
     for (int i = 0; i < neighbors.size(); ++i) {
@@ -147,21 +146,20 @@ vector<int> add_disponibles (set<int>* estat) {
     return retorna; 
 }
 
-set<int> genera_successor (set<int>* estat) {
+set<int> genera_successor (const set<int>& estat) {
     cout << "ENTRANT GENERA SUCCESSOR   "; 
-    set<int>* estat_seguent = new set<int> (); 
-    *estat_seguent = *estat; 
+    set<int> estat_seguent = estat; 
     vector<int> elimina = eliminar_disponibles(estat); 
     vector<int> add = add_disponibles(estat); 
     int aleatori = rand() % ((elimina.size() + add.size())-1) + 0;
     if (aleatori < elimina.size()) {
-        (*estat_seguent).erase(elimina[aleatori]); 
+        estat_seguent.erase(elimina[aleatori]); 
     }
     else {
-        (*estat_seguent).insert(add[aleatori-elimina.size()]); 
+        estat_seguent.insert(add[aleatori-elimina.size()]); 
     }
     cout << "ACABAT GENERA SUCCESSOR    "; 
-    return (estat_seguent); 
+    return estat_seguent; 
 
 }
 
