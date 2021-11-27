@@ -97,45 +97,25 @@ int heuristic (const set<int>& estat) {
     return estat.size(); 
 }
 
-bool inf_positiva(const set<int>& c_inf_positiva) {
-    for (int i = 0; i < neighbors.size(); i++) {
-        int meitat = ceil(neighbors[i].size()/2.0); 
-        bool almenys_meitat = false; 
-        int contador = 0; 
-        set<int>::iterator it; 
-        for (it = neighbors[i].begin(); (it != neighbors[i].end()) && (!almenys_meitat); it++) {
-            if ( (c_inf_positiva.find(*it) != c_inf_positiva.end())) contador++; 
-            if (contador >= meitat) almenys_meitat = true; 
-        }
-        if (!almenys_meitat) return false; 
-
-    }
-    return true; 
-}
-
 bool is_dominant(const set<int>& set) {
-	bool is = true;
-	for (int i = 0; i < neighbors.size() && is; ++i) {
+	for (int i = 0; i < neighbors.size(); ++i) {
 	   int size = neighbors[i].size();
 	   size = ceil((size/2.0));
 	   
 	   for (int j : neighbors[i]) {
-		  bool found = false;
-		  for (int k : set) if(!found){
-			 if (j == k) {
-			   --size;
-			   found = true;
+		  if (set.find(j) != set.end()) {
+			--size;
+			   
 				 
-			 }
 		  }
 		   
 	   }
 	   if (size > 0) {
-		   is = false;  
+		   return false; 
 	   
 	   }
 	}
-	return is;
+	return true;
 }
 
 
@@ -144,7 +124,7 @@ vector<int> eliminar_disponibles (const set<int>& estat)  {
     set<int> e = estat;
     for (int i : estat) {
         e.erase(i);
-        if (inf_positiva(e)) {
+        if (is_dominant(e)) {
             retorna.push_back(i); 
         }
     }
