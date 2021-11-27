@@ -97,7 +97,7 @@ int heuristic (const set<int>& estat) {
     return estat.size(); 
 }
 
-bool inf_positiva(set<int> c_inf_positiva) {
+bool inf_positiva(const set<int>& c_inf_positiva) {
     for (int i = 0; i < neighbors.size(); i++) {
         int meitat = ceil(neighbors[i].size()/2.0); 
         bool almenys_meitat = false; 
