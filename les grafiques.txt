@@ -1,0 +1,17 @@
+Grafiques: 
+
+	-Greedy (pan vs nostre resultats)
+	-Greedy (pan vs nostre temps)
+
+	Annealing (diversos parametres values)
+
+
+	Greedy vs Annealing (resultats)
+	Greedy vs Annealing (temps)
+
+
+
+20 stiter
+
+
+

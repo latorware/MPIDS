@@ -21,3 +21,8 @@ ggplot(data=ITERACIONS_TRANSFORMADA, aes(x=Iteracions, y=Resultat))+
   geom_line(aes(y = tempstransformat), color="#ad7d8b",  size=1.2,) +
   theme(legend.title=element_blank(), axis.title.y = element_text(color = "#579199", size = 11), axis.title.y.right = element_text(color = "#ad7d8b",size = 11 ))
 
+
+#COMPARACIO RESULTATS SEGONS LES ITERACIONS PER CANVI DE TEMPERATURA
+
+
+

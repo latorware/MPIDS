@@ -1,5 +1,7 @@
-make local_search --dry-run --keep-going --print-directory
+make local_search --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/mnt/c/Users/lator/Documents/GitHub/MPIDS/software'
-make: 'local_search' is up to date.
+g++ -ansi -O3 -fpermissive -std=c++17    -c -o Random.o Random.cc
+g++ -ansi -O3 -fpermissive -std=c++17    -c -o Timer.o Timer.cc
+g++ -ansi -O3 -fpermissive -std=c++17  -o local_search local_search.cpp Random.o Timer.o
 make: Leaving directory '/mnt/c/Users/lator/Documents/GitHub/MPIDS/software'
  

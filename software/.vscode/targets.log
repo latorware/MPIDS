@@ -5,9 +5,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Sat Nov 27 14:53:35 2021
+# Make data base, printed on Sun Nov 28 12:12:42 2021
 
 # Variables
 
@@ -72,7 +71,7 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-32c2282f-ae65-4c19-9c25-fffc9e7ac84f.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-33de020d-5818-4385-b5d5-240c0fbb970a.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -178,7 +177,7 @@ WSL_DISTRO_NAME = Ubuntu
 # environment
 MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=83/1024=8%, Rehash=0, Collisions=7/111=6%
+# Load=83/1024=8%, Rehash=0, Collisions=7/116=6%
 
 # Pattern-specific Variable Values
 
@@ -186,9 +185,9 @@ MOTD_SHOWN = update-motd
 
 # Directories
 
-# . (device 66, inode 3096224744650125): 28 files, no impossibilities.
+# . (device 66, inode 3096224744650125): 29 files, no impossibilities.
 
-# 28 files, no impossibilities in 1 directories.
+# 29 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -201,7 +200,15 @@ all: greedy local_search
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 Makefile:
@@ -213,7 +220,7 @@ Makefile:
 # Not a target:
 local_search.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-27 14:49:39.3735514
+#  Last modified 2021-11-27 21:59:58.9681996
 #  File has been updated.
 #  Successfully updated.
 
@@ -239,48 +246,68 @@ clean:
 
 local_search: local_search.cpp Random.o Timer.o
 #  Implicit rule search has not been done.
-#  Last modified 2021-11-27 14:53:34.3027918
+#  Implicit/static pattern stem: ''
+#  Last modified 2021-11-27 21:55:21.4200435
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := local_search
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := local_search.cpp Random.o Timer.o
+# automatic
+# | := 
+# automatic
+# < := local_search.cpp
+# automatic
+# ^ := local_search.cpp Random.o Timer.o
+# automatic
+# ? := local_search.cpp
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
 #  recipe to execute (from 'Makefile', line 21):
 	${CCC} ${CXXFLAGS} -o $@ $^
 
 greedy: greedy.cpp Random.o Timer.o
 #  Implicit rule search has not been done.
-#  Last modified 2021-11-27 14:53:33.2991203
+#  Last modified 2021-11-27 21:55:20.4887831
 #  File has been updated.
 #  Successfully updated.
+ 
 #  recipe to execute (from 'Makefile', line 18):
 	${CCC} ${CXXFLAGS} -o $@ $^
 
 # Not a target:
 Timer.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-27 14:53:32.2615186
+#  Last modified 2021-11-27 21:55:19.516528
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Random.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-27 14:53:32.2210603
+#  Last modified 2021-11-27 21:55:19.4824032
 #  File has been updated.
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/32=0%
+# Load=11/1024=1%, Rehash=0, Collisions=0/33=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 34 / storage = 414 B / avg = 12 B
-# current buf: size = 8162 B / used = 414 B / count = 34 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 35 / storage = 441 B / avg = 12 B
+# current buf: size = 8162 B / used = 441 B / count = 35 / avg = 12 B
 
-# strcache performance: lookups = 53 / hit rate = 35%
+# strcache performance: lookups = 55 / hit rate = 36%
 # hash-table stats:
-# Load=34/8192=0%, Rehash=0, Collisions=1/53=2%
-# Finished Make data base on Sat Nov 27 14:53:35 2021
+# Load=35/8192=0%, Rehash=0, Collisions=1/55=2%
+# Finished Make data base on Sun Nov 28 12:12:42 2021
 
  
