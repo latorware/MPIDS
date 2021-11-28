@@ -269,8 +269,8 @@ int main( int argc, char **argv ) {
         }
         //cout << "DESPRES DE CREAR ESTAT INICIAL" << endl; 
 
-        int iteraciones = 5000;
-        int itpertemp = 2500; 
+        int iteraciones = 50000;
+        int itpertemp = 100; 
         double k = 1; 
         double lambda = 0.0000000001; 
 
