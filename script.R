@@ -22,7 +22,23 @@ ggplot(data=ITERACIONS_TRANSFORMADA, aes(x=Iteracions, y=Resultat))+
   theme(legend.title=element_blank(), axis.title.y = element_text(color = "#579199", size = 11), axis.title.y.right = element_text(color = "#ad7d8b",size = 11 ))
 
 
-#COMPARACIO RESULTATS SEGONS LES ITERACIONS PER CANVI DE TEMPERATURA
+#COMPARACIO RESULTATS SEGONS LES ITERACIONS PER CANVI DE TEMPERATURA ANNEALING
+
+STITER <- read.delim("clipboard")
+
+ggplot(data=STITER, aes(y=Resultat, color=factor(Stiter), linetype=factor(Stiter)),)+
+  geom_boxplot() +
+  theme_ft_rc() + 
+  labs(  y="Resultat (numero vertexs conjunt d.  de influencia positiva)", 
+         title="Resultats segons nombre de iteracions per canvi de temperatura de s annealing",
+         subtitle="iteracions = 5000; k = 1; lambda = (1*10^(-9))",
+         caption="Dades: results.csv. graf:ego-facebook;"
+  ) +
+  scale_color_manual(values = c("#579199", "white", "#d6a69c"), ) +
+  theme(legend.title=element_blank()) + theme(axis.title.x=element_blank(),
+                                              axis.text.x=element_blank(),
+                                              axis.ticks.x=element_blank())
+
 
 
 
