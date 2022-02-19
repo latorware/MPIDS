@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Nov 28 12:12:42 2021
+# Make data base, printed on Tue Nov 30 16:15:20 2021
 
 # Variables
 
@@ -65,13 +65,13 @@ VSCODE_CWD = /mnt/c/Users/lator/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/latorware/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/program files/eclipse foundation/jdk-11.0.12.7-hotspot/bin:/mnt/c/program files (x86)/vmware/vmware player/bin/:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/system32/wbem:/mnt/c/windows/system32/windowspowershell/v1.0/:/mnt/c/windows/system32/openssh/:/mnt/c/program files/nvidia corporation/nvidia nvdlisr:/mnt/c/programdata/chocolatey/bin:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/system32/wbem:/mnt/c/windows/system32/windowspowershell/v1.0/:/mnt/c/windows/system32/openssh/:/mnt/c/program files/microsoft sql server/120/tools/binn/:/mnt/c/program files/dotnet/:/mnt/c/program files/calibre2/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Common Files/Autodesk Shared/:/mnt/c/Users/lator/AppData/Local/Programs/Python/Python39/Scripts/:/mnt/c/Users/lator/AppData/Local/Programs/Python/Python39/:/mnt/c/Users/lator/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/lator/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/tools/gpu/NVFLASH/x64:/mnt/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin:/mnt/c/Qt/5.15.2/mingw81_64/bin:/mnt/c/Users/lator/AppData/Roaming/cabal/bin:/mnt/c/tools/ghc-9.0.1/bin:/mnt/c/Users/lator/AppData/Local/GitHubDesktop/bin:/snap/bin
+PATH = /home/latorware/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/bin:/home/latorware/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/program files/eclipse foundation/jdk-11.0.12.7-hotspot/bin:/mnt/c/program files (x86)/vmware/vmware player/bin/:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/system32/wbem:/mnt/c/windows/system32/windowspowershell/v1.0/:/mnt/c/windows/system32/openssh/:/mnt/c/program files/nvidia corporation/nvidia nvdlisr:/mnt/c/programdata/chocolatey/bin:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/system32/wbem:/mnt/c/windows/system32/windowspowershell/v1.0/:/mnt/c/windows/system32/openssh/:/mnt/c/program files/microsoft sql server/120/tools/binn/:/mnt/c/program files/dotnet/:/mnt/c/program files/calibre2/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Common Files/Autodesk Shared/:/mnt/c/Users/lator/AppData/Local/Programs/Python/Python39/Scripts/:/mnt/c/Users/lator/AppData/Local/Programs/Python/Python39/:/mnt/c/Users/lator/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/lator/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/tools/gpu/NVFLASH/x64:/mnt/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin:/mnt/c/Qt/5.15.2/mingw81_64/bin:/mnt/c/Users/lator/AppData/Roaming/cabal/bin:/mnt/c/tools/ghc-9.0.1/bin:/mnt/c/Users/lator/AppData/Local/GitHubDesktop/bin:/snap/bin
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-33de020d-5818-4385-b5d5-240c0fbb970a.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-fa2d8dca-5d4e-4dcc-9acf-ab960556cd55.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -185,7 +185,7 @@ MOTD_SHOWN = update-motd
 
 # Directories
 
-# . (device 66, inode 3096224744650125): 29 files, no impossibilities.
+# . (device 65, inode 3096224744650125): 29 files, no impossibilities.
 
 # 29 files, no impossibilities in 1 directories.
 
@@ -220,7 +220,7 @@ Makefile:
 # Not a target:
 local_search.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-27 21:59:58.9681996
+#  Last modified 2021-11-28 17:30:46.8404579
 #  File has been updated.
 #  Successfully updated.
 
@@ -247,7 +247,7 @@ clean:
 local_search: local_search.cpp Random.o Timer.o
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: ''
-#  Last modified 2021-11-27 21:55:21.4200435
+#  Last modified 2021-11-28 14:23:10.6853771
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
@@ -273,7 +273,7 @@ local_search: local_search.cpp Random.o Timer.o
 
 greedy: greedy.cpp Random.o Timer.o
 #  Implicit rule search has not been done.
-#  Last modified 2021-11-27 21:55:20.4887831
+#  Last modified 2021-11-28 14:23:09.7190103
 #  File has been updated.
 #  Successfully updated.
  
@@ -283,14 +283,14 @@ greedy: greedy.cpp Random.o Timer.o
 # Not a target:
 Timer.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-27 21:55:19.516528
+#  Last modified 2021-11-28 14:23:08.6602792
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Random.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-27 21:55:19.4824032
+#  Last modified 2021-11-28 14:23:08.6192565
 #  File has been updated.
 #  Successfully updated.
 
@@ -308,6 +308,6 @@ Random.o:
 # strcache performance: lookups = 55 / hit rate = 36%
 # hash-table stats:
 # Load=35/8192=0%, Rehash=0, Collisions=1/55=2%
-# Finished Make data base on Sun Nov 28 12:12:42 2021
+# Finished Make data base on Tue Nov 30 16:15:20 2021
 
  
